@@ -1,0 +1,73 @@
+$mainColorFirst: #ffefd5;
+$mainColorSecond: #482f19;
+
+.header {
+  height: 2.3em;
+  border-bottom: 2px solid $mainColorSecond;
+  background-color: $mainColorFirst;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: $mainColorSecond;
+  padding: 5px 6px;
+
+  p {
+    font-size: 2em;
+    font-family: "Comic Sans MS";
+  }
+}
+
+button {
+  color: $mainColorSecond !important;
+}
+
+.MuiButton-contained, .MuiButton-outlined {
+  border: 1px solid $mainColorSecond !important;
+}
+
+.MuiButton-contained {
+  background-color: $mainColorSecond !important;
+  color: $mainColorFirst !important;
+}
+
+.interface {
+  button {
+    margin: 0 10px;
+
+    svg {
+      width: 1.5em;
+      height: 1.5em;
+    }
+  }
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 35%;
+  background-color: $mainColorFirst;
+  border: 2px solid $mainColorSecond;
+  padding: 8px;
+  color: $mainColorSecond;
+
+  label {
+    color: $mainColorSecond !important;
+  }
+
+  .feedback-input {
+    margin: 15px 5px 0 0;
+    width: 100%;
+  }
+
+  .modal-footer {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+
+    button {
+      margin-left: 6px;
+    }
+  }
+}

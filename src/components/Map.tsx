@@ -25,7 +25,8 @@ export function MapRender() {
     // ставим маркер с местонахождением пользователя
     const getGeoLocation = (ymaps: YMapsApi) => {
         ymaps.geolocation.get().then((res: any) => { // TODO интерфейс?
-            setMapZoom(16);
+            const newZoom = config.isMobile ? 18 : 16;
+            setMapZoom(newZoom);
             setMapUser(res.geoObjects.position);
         })
     };
@@ -51,10 +52,7 @@ export function MapRender() {
                     <Placemark
                         geometry={ mapUser }
                         properties={{ iconContent: "Я" }}
-                        options={{
-                            preset: 'islands#circleIcon',
-                            iconColor: '#D80024'
-                        }}
+                        options={{ preset: 'islands#redCircleIcon' }}
                     />
 
                     { points.map(point => {
@@ -70,10 +68,7 @@ export function MapRender() {
                                  balloonContent: content,
                                  hideIconOnBalloonOpen: false
                              }}
-                             options={{
-                                 preset: 'islands#circleIcon',
-                                 iconColor: '#D80024'
-                             }}
+                             options={{ preset: 'islands#brownToiletIcon' }}
                          />
                         }
                     )}
