@@ -2,14 +2,14 @@ $mainColorFirst: #ffefd5;
 $mainColorSecond: #482f19;
 
 .header {
-  height: 2.3em;
+  height: 50px;
   border-bottom: 2px solid $mainColorSecond;
   background-color: $mainColorFirst;
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: $mainColorSecond;
-  padding: 5px 6px;
+  padding: 4px;
 
   p {
     font-size: 2em;
@@ -31,12 +31,12 @@ button {
 }
 
 .interface {
-  button {
+  button:first-child {
     margin: 0 10px;
 
     svg {
-      width: 1.5em;
-      height: 1.5em;
+      width: 40px;
+      height: 40px;
     }
   }
 }

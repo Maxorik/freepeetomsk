@@ -10,7 +10,7 @@ export function MapRender() {
     const [mapWidth, setMapWidth] = useState(0);
     const [mapHeight, setMapHeight] = useState(0);
     const [mapUser, setMapUser] = useState(config.tomskCenter);
-    const [mapZoom, setMapZoom] = useState(13);
+    const [mapZoom, setMapZoom] = useState(16);
     const [points, setPoints] = useState<IPoint[]>([]);
 
     // ставим карту на весь экран устройства
