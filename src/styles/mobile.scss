@@ -1,14 +1,45 @@
 @media screen and (max-device-width: 400px) {
   .modal {
-    width: 80%;
-    border: 1px solid $mainColorSecond;
-    padding: 4px;
-    font-size: 24px;
+    width: 90%;
+    border: 1px solid #482f19;
+    padding: 10px;
+    h2 {
+      font-size: 21px;
+    }
+    p {
+      font-size: 20px;
+    }
+    .text-area>div {
+      height: 200px;
+    }
   }
 
   .header {
+    border-top: 2px solid #482f19;
+    justify-content: center;
+    padding: 0;
     p {
       font-size: 24px;
+    }
+  }
+
+  .interface {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    button {
+      Text-Transform: Capitalize;
+      display: flex;
+      flex-direction: column;
+      span {
+        margin: 0;
+      }
+      svg {
+        font-size: 2.3em;
+        margin-bottom: -7px;
+        width: 33px !important;
+        height: 33px !important;
+      }
     }
   }
 }

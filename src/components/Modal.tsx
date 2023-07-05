@@ -25,18 +25,17 @@ export function ModalWindow({ state, onCloseHandler }: ModalProps) {
             aria-describedby="modal-modal-description"
         >
             <Box className="modal">
-                <Typography id="modal-modal-title" variant="h6" component="h2">
+                <Typography variant="h6" component="h2">
                     На карте кое-чего не хватает...
                 </Typography>
-                <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                    Тогда напишите мне. Можно вставить ссылку на <a href="https://2gis.ru/tomsk" target="_blank">2ГИС</a> и указать описание.
+                <Typography sx={{ mt: 2 }}>
+                    Тогда напишите мне. Можно вставить ссылку на <a href="https://2gis.ru/tomsk" target="_blank">2ГИС</a> и указать описание места.
                 </Typography>
                 <TextField
-                    id="feedback_value"
                     label="Введите текст"
                     multiline
-                    maxRows={10}
-                    className="feedback-input"
+                    maxRows={8}
+                    className="feedback-input text-area"
                 />
                 <div className="modal-footer">
                     <Button variant="outlined" onClick={() => { onCloseHandler() }}> отмена </Button>

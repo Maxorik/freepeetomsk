@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import {YMaps, Map, Placemark} from '@pbe/react-yandex-maps';
 import {YMapsApi} from "@pbe/react-yandex-maps/typings/util/typing";
+import WcIcon from '@mui/icons-material/Wc';
 
 import { config } from "../config";
 import { IPoint } from "./models";
@@ -10,14 +11,15 @@ export function MapRender() {
     const [mapWidth, setMapWidth] = useState(0);
     const [mapHeight, setMapHeight] = useState(0);
     const [mapUser, setMapUser] = useState(config.tomskCenter);
-    const [mapZoom, setMapZoom] = useState(16);
+    const [mapZoom, setMapZoom] = useState(18);
     const [points, setPoints] = useState<IPoint[]>([]);
 
     // ставим карту на весь экран устройства
     // подгружаем точки
     useEffect(() => {
-        setMapWidth(window.innerWidth - 4);
-        setMapHeight(window.innerHeight - 64);
+        const busyPlace = config.isMobile ? 100 : 60; // место, занятое интерфейсом
+        setMapWidth(window.innerWidth);
+        setMapHeight(window.innerHeight - busyPlace);
         getPoints();
     }, [])
 
@@ -39,9 +41,22 @@ export function MapRender() {
         } catch (e: unknown) {  }
     }
 
+    // // скрываем лишнее с карты
+    // const hideCopyright = () => {
+    //     try {
+    //         const mapClass = document.querySelector('.header')!.nextElementSibling!.firstElementChild!.className;
+    //         const hideElement = document.querySelector<HTMLElement>(`.${mapClass}-map-copyrights-promo`);
+    //         hideElement!.style.display = 'none !important';
+    //     } catch (e) {}
+    // }
+
     return (
-        <YMaps query={{ apikey: config.apiKey }}>
-            <div>
+        <> { config.isMobile &&
+            <div className={ 'header' }>
+                <WcIcon fontSize="large" />
+                <p>ТУАЛЕТЫ ТОМСКА</p>
+            </div> }
+            <YMaps query={{ apikey: config.apiKey }}>
                 <Map
                     width={mapWidth}
                     height={mapHeight}
@@ -51,6 +66,8 @@ export function MapRender() {
                 >
                     <Placemark
                         geometry={ mapUser }
+                        width={'100'}
+                        height={'100'}
                         properties={{ iconContent: "Я" }}
                         options={{ preset: 'islands#redCircleIcon' }}
                     />
@@ -73,7 +90,7 @@ export function MapRender() {
                         }
                     )}
                 </Map>
-            </div>
-        </YMaps>
+            </YMaps>
+        </>
     );
 }
