@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { Button, IconButton } from "@mui/material";
+import { Button } from "@mui/material";
 
 import ReplayIcon from '@mui/icons-material/Replay';
 import ShareIcon from '@mui/icons-material/Share';
@@ -13,7 +13,10 @@ import { config } from "../config";
 
 export function UserInterface() {
     const [showWindow, setShowWindow] = useState(false);
-    const closeModal = () => setShowWindow(false);
+    const [message, setMessage] = useState('');
+    const closeModal = () => {
+        setShowWindow(false);
+    }
 
     // перезагрузить карту
     const reloadPage = () => {
@@ -31,8 +34,13 @@ export function UserInterface() {
 
     return(
         <>
-            {
-                showWindow && <ModalWindow state={ showWindow } onCloseHandler={ closeModal }  />
+            {  showWindow &&
+                <ModalWindow
+                    state={ showWindow }
+                    onCloseHandler={ closeModal }
+                    message={ message }
+                    setMessage={ setMessage }
+                />
             }
             <div className={ 'header' }>
                 { !config.isMobile && <p>ТУАЛЕТЫ ТОМСКА</p> }

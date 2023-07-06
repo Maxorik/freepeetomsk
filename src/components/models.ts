@@ -5,3 +5,7 @@ export interface IPoint {
     positionX: number,
     positionY: number
 }
+
+export interface IFeedback {
+    text: string
+}

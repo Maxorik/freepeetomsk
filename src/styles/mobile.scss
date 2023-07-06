@@ -5,12 +5,15 @@
     padding: 10px;
     h2 {
       font-size: 21px;
+      font-family: "Comic Sans MS";
     }
     p {
       font-size: 20px;
+      font-family: "Comic Sans MS";
     }
     .text-area>div {
       height: 200px;
+      font-family: "Comic Sans MS";
     }
   }
 
@@ -20,6 +23,7 @@
     padding: 0;
     p {
       font-size: 24px;
+      font-family: "Comic Sans MS";
     }
   }
 
@@ -31,6 +35,7 @@
       Text-Transform: Capitalize;
       display: flex;
       flex-direction: column;
+      font-family: "Comic Sans MS";
       span {
         margin: 0;
       }

@@ -36,19 +36,10 @@ export function MapRender() {
     // получаем с апи точки
     async function getPoints() {
         try {
-            const response = await axios.get<IPoint[]>(config.apiUrl);
+            const response = await axios.get<IPoint[]>(config.apiUrl.getPoints);
             setPoints(response.data);
         } catch (e: unknown) {  }
     }
-
-    // // скрываем лишнее с карты
-    // const hideCopyright = () => {
-    //     try {
-    //         const mapClass = document.querySelector('.header')!.nextElementSibling!.firstElementChild!.className;
-    //         const hideElement = document.querySelector<HTMLElement>(`.${mapClass}-map-copyrights-promo`);
-    //         hideElement!.style.display = 'none !important';
-    //     } catch (e) {}
-    // }
 
     return (
         <> { config.isMobile &&
@@ -75,7 +66,7 @@ export function MapRender() {
                     { points.map(point => {
                          let content = `<div style="width: 220px">${point.name} <br /> ${point.descr} </div>`;
                          if(point.image) {
-                             content += `<br /> <img alt="Фото" width="220px" height="auto" src=${point.image} />`;
+                             content += `<br /> <img alt="Фото..." width="220px" height="auto" src=${point.image} />`;
                          }
                          return <Placemark
                              key={new Date().toString()}
