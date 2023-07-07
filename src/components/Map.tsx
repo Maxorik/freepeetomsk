@@ -37,7 +37,8 @@ export function MapRender() {
     async function getPoints() {
         try {
             const response = await axios.get<IPoint[]>(config.apiUrl.getPoints);
-            setPoints(response.data);
+            setPoints(Object.values(response.data));
+            console.log(points)
         } catch (e: unknown) {  }
     }
 
@@ -47,6 +48,7 @@ export function MapRender() {
                 <WcIcon fontSize="large" />
                 <p>ТУАЛЕТЫ ТОМСКА</p>
             </div> }
+            { points.length > 0 &&
             <YMaps query={{ apikey: config.apiKey }}>
                 <Map
                     width={mapWidth}
@@ -69,7 +71,7 @@ export function MapRender() {
                              content += `<br /> <img alt="Фото..." width="220px" height="auto" src=${point.image} />`;
                          }
                          return <Placemark
-                             key={new Date().toString()}
+                             key={ point.positionX }
                              geometry={ [point.positionX, point.positionY] }
                              properties={{
                                  iconCaption: point.name,
@@ -81,7 +83,7 @@ export function MapRender() {
                         }
                     )}
                 </Map>
-            </YMaps>
+            </YMaps> }
         </>
     );
 }

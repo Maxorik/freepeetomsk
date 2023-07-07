@@ -25,11 +25,11 @@ export function AddModalWindow() {
     const sendMessage = () => {
         // axios.post(config.apiUrl.addFeedback,
         const data = {
-            "descr": descr,
-            "image": image,
-            "name": pointName,
-            "positionX": positionX,
-            "positionY": positionY
+            "descr": descr.value,
+            "image": image.value,
+            "name": pointName.value,
+            "positionX": positionX.value,
+            "positionY": positionY.value
         };
 
         axios.post(config.apiUrl.getPoints, data);
