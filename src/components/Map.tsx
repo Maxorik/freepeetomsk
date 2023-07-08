@@ -38,6 +38,7 @@ export function MapRender() {
         try {
             const response = await axios.get<IPoint[]>(config.apiUrl.getPoints);
             setPoints(Object.values(response.data));
+            console.log(points)
         } catch (e: unknown) {  }
     }
 
@@ -64,7 +65,7 @@ export function MapRender() {
                         options={{ preset: 'islands#redCircleIcon' }}
                     />
 
-                    { points.map(point => {
+                    { Array.isArray(points) && points.map(point => {
                          let content = `<div style="width: 220px">${point.name} <br /> ${point.descr} </div>`;
                          if(point.image) {
                              content += `<br /> <img alt="Фото..." width="220px" height="auto" src=${point.image} />`;
