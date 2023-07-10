@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { MapRender } from './components/Map'
+// import { MapRender } from './components/Map'
 import { UserInterface } from "./components/UserInterface";
-import { config } from "./config";
+// import { config } from "./config";
 
 function App() {
   return (
@@ -10,8 +10,8 @@ function App() {
           <div className="header">
               <UserInterface/>
           </div>
-          <div className="mobile-title"></div>
-          <MapRender />
+          <div className="mobile-title"/>
+          {/*<MapRender />*/}
           <div className="footer">
               <UserInterface/>
           </div>
