@@ -7,9 +7,14 @@ import { config } from "./config";
 function App() {
   return (
       <>
-        { !config.isMobile && <UserInterface/> }
-        <MapRender />
-        { config.isMobile && <UserInterface/> }
+          <div className="header">
+              <UserInterface/>
+          </div>
+          <div className="mobile-title"></div>
+          <MapRender />
+          <div className="footer">
+              <UserInterface/>
+          </div>
       </>
   );
 }

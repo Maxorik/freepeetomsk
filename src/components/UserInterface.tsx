@@ -42,37 +42,35 @@ export function UserInterface() {
                     setMessage={ setMessage }
                 />
             }
-            <div className={ 'header' }>
-                { !config.isMobile && <p>ТУАЛЕТЫ ТОМСКА</p> }
-                <div className={ 'interface' }>
-                    <Button
-                        startIcon={ <HelpOutlineIcon /> }
-                        onClick={() => { reloadPage() }}
-                    >
-                        Где я
-                    </Button >
-                    { config.isMobile && <>
-                    <Button
-                        startIcon={ <ReplayIcon /> }
-                        onClick={() => { reloadPage() }}
-                    >
-                        Обновить
-                    </Button >
-                    <Button
-                        startIcon={ <ShareIcon /> }
-                        onClick={() => { shareApp() }}
-                    >
-                        Поделиться
-                    </Button> </> }
-                    { !config.isMobile && <Button variant="contained" startIcon={ <EmailIcon /> } size="medium"
-                        onClick={() => { setShowWindow(true) }}
-                    >
-                        Написать
-                    </Button> }
-                    { config.isMobile && <Button startIcon={ <MailOutlineIcon /> } onClick={() => { setShowWindow(true) }}>
-                        Написать
-                    </Button> }
-                </div>
+            { !config.isMobile && <p>ТУАЛЕТЫ ТОМСКА</p> }
+            <div className={ 'interface' }>
+                <Button
+                    startIcon={ <HelpOutlineIcon /> }
+                    onClick={() => { reloadPage() }}
+                >
+                    Где я
+                </Button >
+                { config.isMobile && <>
+                <Button
+                    startIcon={ <ReplayIcon /> }
+                    onClick={() => { reloadPage() }}
+                >
+                    Обновить
+                </Button >
+                <Button
+                    startIcon={ <ShareIcon /> }
+                    onClick={() => { shareApp() }}
+                >
+                    Поделиться
+                </Button> </> }
+                { !config.isMobile && <Button variant="contained" startIcon={ <EmailIcon /> } size="medium"
+                    onClick={() => { setShowWindow(true) }}
+                >
+                    Написать
+                </Button> }
+                { config.isMobile && <Button startIcon={ <MailOutlineIcon /> } onClick={() => { setShowWindow(true) }}>
+                    Написать
+                </Button> }
             </div>
         </>
     )

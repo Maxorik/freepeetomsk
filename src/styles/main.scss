@@ -1,7 +1,7 @@
 $mainColorFirst: #ffefd5;
 $mainColorSecond: #482f19;
 
-.header {
+.header, .main-title {
   height: 50px;
   border-bottom: 2px solid $mainColorSecond;
   background-color: $mainColorFirst;
@@ -15,6 +15,10 @@ $mainColorSecond: #482f19;
     font-size: 2em;
     font-family: "Comic Sans MS";
   }
+}
+
+.footer {
+  display: none;
 }
 
 button {

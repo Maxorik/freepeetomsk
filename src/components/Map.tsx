@@ -44,46 +44,44 @@ export function MapRender() {
 
     return (
         <> { config.isMobile &&
-            <div className={ 'header' }>
+            <div className={ 'main-title' }>
                 <WcIcon fontSize="large" />
                 <p>ТУАЛЕТЫ ТОМСКА</p>
             </div> }
-            { points.length > 0 &&
             <YMaps query={{ apikey: config.apiKey }}>
                 <Map
-                    width={mapWidth}
-                    height={mapHeight}
+                    width={ mapWidth }
+                    height={ mapHeight }
                     state={{ center: mapUser, zoom: mapZoom }}
-                    modules={["geolocation", "geocode", "geoObject.addon.balloon", "geoObject.addon.hint" ]}
-                    onLoad={(ymaps) => getGeoLocation(ymaps)}
+                    modules={ ["geolocation", "geocode", "geoObject.addon.balloon", "geoObject.addon.hint" ] }
+                    onLoad={ (ymaps) => getGeoLocation(ymaps) }
                 >
                     <Placemark
                         geometry={ mapUser }
-                        width={'100'}
-                        height={'100'}
+                        width={ '100' }
+                        height={ '100' }
                         properties={{ iconContent: "Я" }}
                         options={{ preset: 'islands#redCircleIcon' }}
                     />
-
-                    { Array.isArray(points) && points.map(point => {
-                         let content = `<div style="width: 220px">${point.name} <br /> ${point.descr} </div>`;
-                         if(point.image) {
-                             content += `<br /> <img alt="Фото..." width="220px" height="auto" src=${point.image} />`;
-                         }
-                         return <Placemark
-                             key={ point.positionX }
-                             geometry={ [point.positionX, point.positionY] }
-                             properties={{
-                                 iconCaption: point.name,
-                                 balloonContent: content,
-                                 hideIconOnBalloonOpen: false
-                             }}
-                             options={{ preset: 'islands#brownToiletIcon' }}
-                         />
-                        }
-                    )}
+                    {/*{ Array.isArray(points) && points.map(point => {*/}
+                    {/*     let content = `<div style="width: 220px">${point.name} <br /> ${point.descr} </div>`;*/}
+                    {/*     if(point.image) {*/}
+                    {/*         content += `<br /> <img alt="Фото..." width="220px" height="auto" src=${point.image} />`;*/}
+                    {/*     }*/}
+                    {/*     return <Placemark*/}
+                    {/*         key={ point.positionX }*/}
+                    {/*         geometry={ [point.positionX, point.positionY] }*/}
+                    {/*         properties={{*/}
+                    {/*             iconCaption: point.name,*/}
+                    {/*             balloonContent: content,*/}
+                    {/*             hideIconOnBalloonOpen: false*/}
+                    {/*         }}*/}
+                    {/*         options={{ preset: 'islands#brownToiletIcon' }}*/}
+                    {/*     />*/}
+                    {/*    }*/}
+                    {/*)}*/}
                 </Map>
-            </YMaps> }
+            </YMaps>
         </>
     );
 }

@@ -18,13 +18,16 @@
   }
 
   .header {
+    display: none;
+  }
+
+  .footer {
+    display: flex;
+    width: 100%;
     border-top: 2px solid #482f19;
-    justify-content: center;
-    padding: 0;
-    p {
-      font-size: 24px;
-      font-family: "Comic Sans MS";
-    }
+    background-color: $mainColorFirst;
+    position: fixed;
+    bottom: 30px;
   }
 
   .interface {
@@ -46,5 +49,9 @@
         height: 33px !important;
       }
     }
+  }
+
+  .main-title {
+    padding: 5px 10px;
   }
 }
