@@ -1,8 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
-import {YMaps, Map, Placemark} from '@pbe/react-yandex-maps';
-import {YMapsApi} from "@pbe/react-yandex-maps/typings/util/typing";
+import { YMaps, Map, Placemark } from '@pbe/react-yandex-maps';
+import { YMapsApi } from "@pbe/react-yandex-maps/typings/util/typing";
+import { Button } from "@mui/material";
 import WcIcon from '@mui/icons-material/Wc';
+import AddIcon from '@mui/icons-material/Add';
+import { AddPlaceWindow } from './AddPlaceWindow';
 
 import { config } from "../config";
 import { IPoint } from "./models";
@@ -13,6 +16,12 @@ export function MapRender() {
     const [mapUser, setMapUser] = useState(config.tomskCenter);
     const [mapZoom, setMapZoom] = useState(18);
     const [points, setPoints] = useState<IPoint[]>([]);
+    const [editMode, setEditMode] = useState(false);
+    const [showWindow, setShowWindow] = useState(false);
+    const [cX, setCX] = useState(0);
+    const [cY, setCY] = useState(0);
+
+    const closeModal = () => { setShowWindow(false); }
 
     // ставим карту на весь экран устройства
     // подгружаем точки
@@ -42,19 +51,51 @@ export function MapRender() {
         } catch (e: unknown) {  }
     }
 
+    // При щелчке
+    const handleClick = (event: any) => {
+        if (editMode) {
+            const coords = event.get('coords');
+            setCX(coords[0]);
+            setCY(coords[1]);
+            setEditMode(false);
+            setShowWindow(true);
+        }
+    };
+
     return (
-        <> { config.isMobile &&
+        <>
+            {  showWindow &&
+                <AddPlaceWindow
+                    onCloseHandler={ closeModal }
+                    cX={ cX }
+                    cY={ cY }
+                />
+            }
+            { config.isMobile &&
             <div className={ 'main-title' }>
                 <WcIcon fontSize="large" />
                 <p>ТУАЛЕТЫ ТОМСКА</p>
             </div> }
-            <YMaps query={{ apikey: config.apiKey }}>
+            { config.adminMode && <div className='admin-panel interface'>
+                <Button
+                    startIcon={<AddIcon/>}
+                    onClick={() => {
+                        setEditMode(!editMode);
+                    }}
+                >
+                    Режим "Добавить место"
+                </Button>
+                { editMode && <span className="button-qtip">нажмите на место на карте</span> }
+            </div> }
+            <div className={ editMode ? 'map-edit-mode' : '' }>
+                <YMaps query={{ apikey: config.apiKey }}>
                 <Map
                     width={ mapWidth }
                     height={ mapHeight }
                     state={{ center: mapUser, zoom: mapZoom }}
                     modules={ ["geolocation", "geocode", "geoObject.addon.balloon", "geoObject.addon.hint" ] }
                     onLoad={ (ymaps) => getGeoLocation(ymaps) }
+                    onClick={ handleClick }
                 >
                     <Placemark
                         geometry={ mapUser }
@@ -82,6 +123,7 @@ export function MapRender() {
                     )}
                 </Map>
             </YMaps>
+            </div>
         </>
     );
 }

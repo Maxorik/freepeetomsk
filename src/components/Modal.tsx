@@ -28,7 +28,6 @@ export function ModalWindow({ state, onCloseHandler, message, setMessage }: Moda
     }
 
     const sendMessage = () => {
-
         if(message.trim()) {
             axios.post(config.apiUrl.addFeedback, {
                 text: message
@@ -49,7 +48,7 @@ export function ModalWindow({ state, onCloseHandler, message, setMessage }: Moda
                 <Typography variant="h6" component="h2">
                     На карте кое-чего не хватает...
                 </Typography>
-                <Typography sx={{ mt: 2 }}>
+                <Typography sx={{ mt: 2 }} className="modal-subtitle">
                     Тогда напишите мне. Можно вставить ссылку на <a href="https://2gis.ru/tomsk" target="_blank">2ГИС</a> и указать описание места.
                 </Typography>
                 <TextField

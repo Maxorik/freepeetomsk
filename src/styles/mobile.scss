@@ -7,9 +7,11 @@
       font-size: 21px;
       font-family: "Comic Sans MS";
     }
-    p {
+    h3 {
+      font-size: 15px;
+    }
+    .modal-subtitle {
       font-size: 20px;
-      font-family: "Comic Sans MS";
     }
     .text-area>div {
       height: 200px;
@@ -53,5 +55,26 @@
 
   .main-title {
     padding: 5px 10px;
+  }
+
+  .admin-panel {
+    position: absolute;
+    bottom: 63px;
+    z-index: 1000;
+    background-color: #ffefd5;
+    justify-content: center;
+    border-top: 2px solid #482f19;
+    display: flex;
+    flex-wrap: wrap;
+    font-family: "Comic Sans MS";
+
+    button {
+      flex-direction: row;
+      font-size: 1.2em;
+      align-items: flex-start;
+      width: 100%;
+      padding: 5px 0;
+      margin: 0 !important;
+    }
   }
 }
