@@ -9,6 +9,7 @@ import SendIcon from '@mui/icons-material/Send';
 
 import { config } from "../config";
 import Typography from "@mui/material/Typography";
+import { IPoint } from "./models";
 
 interface WindowProps {
     onCloseHandler: () => void,
@@ -27,18 +28,14 @@ export function AddPlaceWindow({ onCloseHandler, cX, cY }: WindowProps) {
     const pointName = useFormField();
     const image = useFormField();
 
-    console.log(cX, cY)
-
     const sendMessage = () => {
-        const data = {
+        const data: IPoint = {
             "descr": descr.value,
             "image": image.value || '',
             "name": pointName.value,
             "positionX": cX,
             "positionY": cY
         };
-
-        console.log(data)
 
         if (checkValidForm()) {
             axios.post(config.apiUrl.getPoints, data);
@@ -58,7 +55,7 @@ export function AddPlaceWindow({ onCloseHandler, cX, cY }: WindowProps) {
         >
             <Box className="modal">
                 <Typography variant="h6" component="h2">
-                    Добавляем новую точку на карту
+                    Добавляем новую точку
                 </Typography>
                 <Typography variant="h6" component="h3">
                     * - обязательно заполнить
@@ -75,6 +72,7 @@ export function AddPlaceWindow({ onCloseHandler, cX, cY }: WindowProps) {
                     className="feedback-input text-area"
                     required
                     multiline
+                    maxRows="6"
                     {...descr}
                 />
                 <TextField
@@ -83,7 +81,7 @@ export function AddPlaceWindow({ onCloseHandler, cX, cY }: WindowProps) {
                     {...image}
                 />
                 <Typography variant="h6" component="h3" style={{marginTop: '10px'}}>
-                    После закрытия окна точка добавится после обновления карты
+                    Точка добавится после обновления карты
                 </Typography>
                 <div className="modal-footer">
                     <Button variant="outlined" onClick={() => { onCloseHandler() }}> отмена </Button>
