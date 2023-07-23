@@ -83,7 +83,7 @@ export function MapRender() {
                         setEditMode(!editMode);
                     }}
                 >
-                    Режим "Добавить место"
+                    Добавить место
                 </Button>
                 { editMode && <span className="button-qtip">нажмите на место на карте</span> }
             </div> }

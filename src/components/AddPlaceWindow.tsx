@@ -55,7 +55,7 @@ export function AddPlaceWindow({ onCloseHandler, cX, cY }: WindowProps) {
         >
             <Box className="modal">
                 <Typography variant="h6" component="h2">
-                    Добавляем новую точку
+                    Добавляем новое место на карту
                 </Typography>
                 <Typography variant="h6" component="h3">
                     * - обязательно заполнить
@@ -81,7 +81,7 @@ export function AddPlaceWindow({ onCloseHandler, cX, cY }: WindowProps) {
                     {...image}
                 />
                 <Typography variant="h6" component="h3" style={{marginTop: '10px'}}>
-                    Точка добавится после обновления карты
+                    Место добавится после обновления карты
                 </Typography>
                 <div className="modal-footer">
                     <Button variant="outlined" onClick={() => { onCloseHandler() }}> отмена </Button>

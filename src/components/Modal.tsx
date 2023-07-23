@@ -46,13 +46,10 @@ export function ModalWindow({ state, onCloseHandler, message, setMessage }: Moda
         >
             <Box className="modal">
                 <Typography variant="h6" component="h2">
-                    На карте кое-чего не хватает...
-                </Typography>
-                <Typography sx={{ mt: 2 }} className="modal-subtitle">
-                    Тогда напишите мне. Можно вставить ссылку на <a href="https://2gis.ru/tomsk" target="_blank">2ГИС</a> и указать описание места.
+                    Есть идеи по улучшению карты?
                 </Typography>
                 <TextField
-                    label="Введите текст"
+                    label="Напишите мне"
                     multiline
                     maxRows={8}
                     className="feedback-input text-area"
