@@ -35,11 +35,19 @@ export function MapRender() {
     // при загрузке карты центрируем по местонахождению пользователя
     // ставим маркер с местонахождением пользователя
     const getGeoLocation = (ymaps: YMapsApi) => {
-        ymaps.geolocation.get().then((res: any) => { // TODO интерфейс?
-            const newZoom = config.isMobile ? 18 : 16;
-            setMapZoom(newZoom);
-            setMapUser(res.geoObjects.position);
-        })
+        if ("geolocation" in navigator) {
+            navigator.geolocation.getCurrentPosition((position) => {
+                setMapUser([position.coords.latitude, position.coords.longitude]);
+            });
+        } else {
+            ymaps.geolocation.get().then((res: any) => {
+                // const newZoom = config.isMobile ? 18 : 16;
+                // setMapZoom(newZoom);
+                setMapUser(res.geoObjects.position);
+            })
+        }
+        const newZoom = config.isMobile ? 18 : 16;
+        setMapZoom(newZoom);
     };
 
     // получаем с апи точки
